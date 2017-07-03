@@ -19,6 +19,7 @@
 	ff = merge --ff
 	fall = fetch --all
 	check = !git diff $(git rev-parse --abbrev-ref --symbolic-full-name @{u})
+	publish = !git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
 	sync = rebase --interactive develop
         start-feature = "!git branch \"feature/$1\" develop && git checkout \"feature/$1\" #"
         finish-feature = "!git checkout develop && git merge --no-ff \"feature/$1\" -m \"close #$1\" && git branch -d \"feature/$1\" #"
