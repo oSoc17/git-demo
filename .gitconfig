@@ -1,0 +1,28 @@
+[user]
+	name = Adriaan Callaerts
+	email = adriaan.callaerts@gmail.com
+#	signingkey = 5B2C04AC50B54BF1
+[commit]
+#	gpgsign = true
+[push]
+	default = simple
+[core]
+	excludesfile = /home/adriaan/.gitignore
+[merge]
+	ff = false
+[alias]
+	puff = push --force-with-lease
+	amend = commit --amend --no-edit
+	it = "!git init && git commit -m \"start the repo\" --allow-empty && git checkout -b develop #"
+	stats = status --short --branch
+	grog = log --color --graph --abbrev-commit --decorate --all --format=format:\"%C(bold blue)%h%C(reset) %C(bold cyan)%s%C(reset) %C(bold yellow)%d%C(reset)%n  %C(dim white)%aD %C(cyan)(%ar)%n%C(dim white)  %an %C(cyan)[ %G? %GS]%C(reset)\"
+	ff = merge --ff
+	fall = fetch --all
+	check = !git diff $(git rev-parse --abbrev-ref --symbolic-full-name @{u})
+	sync = rebase --interactive develop
+        start-feature = "!git branch \"feature/$1\" develop && git checkout \"feature/$1\" #"
+        finish-feature = "!git checkout develop && git merge --no-ff \"feature/$1\" -m \"close #$1\" && git branch -d \"feature/$1\" #"
+        start-release = "!git branch \"release/$1\" develop && git checkout \"release/$1\" #"
+	finish-release = "!git checkout master && git merge --no-ff \"release/$1\" -m \"finish release $1\" && git tag -m \"$1\" \"$1\" && git checkout develop && git merge --no-ff \"release/$1\" -m \"finish release $1\" && git branch -d \"release/$1\" #"
+        start-hotfix = "!git branch \"hotfix/$1\" master && git checkout \"hotfix/$1\" #"
+	finish-hotfix = "!git checkout master && git merge --no-ff \"hotfix/$1\" -m \"finish release $1\" && git tag -m \"$1\" \"$1\" && git checkout develop && git merge --no-ff \"hotfix/$1\" -m \"finish release $1\" && git branch -d \"hotfix/$1\" #"
