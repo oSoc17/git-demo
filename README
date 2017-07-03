@@ -1,4 +1,5 @@
-# Test repo (v0.1.1)
+# Example repo (v0.1.1)
 
-## Step one
-Honestly, do you really expect any useful content in a test repo?
+## Gitconfig
+Copy the .gitconfig file to your home folder.
+Make sure to edit your name, email and global gitignore file name
